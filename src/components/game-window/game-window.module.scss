@@ -53,7 +53,7 @@ main {
   height: 90%;
   overflow: auto;
 }
-.gameItem {
+@mixin item {
   text-decoration: none;
   font-size: 1.1em;
   border: 1px solid #cacae4;
@@ -65,10 +65,14 @@ main {
   @include hover();
   margin: 4px 0px 4px 4px;
 }
-// .gameItem:nth-of-type(1n + 2) {
-//   margin: 4px 0px;
-// }
+.gameItem {
+  @include item();
+}
 
+.gameItemChosen {
+  @include item();
+  background-color: #ce9d9d;
+}
 .nav::-webkit-scrollbar {
   width: 15px;
 }

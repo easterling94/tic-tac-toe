@@ -1,8 +1,12 @@
 import React, { SyntheticEvent, useState } from 'react';
 import styles from './game-window.module.scss';
 import logo from '../../assets/search_icon_test.png';
+import { NavLink, useLocation } from 'react-router-dom';
+import { Outlet } from '../../../node_modules/react-router-dom/dist/index';
 
 export const GameWindow = () => {
+  const location = useLocation();
+  console.log(location.pathname.substring(1));
   const numberOfGames = new Array(10).fill(0);
   const [value, setValue] = useState('');
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,30 +33,25 @@ export const GameWindow = () => {
           ></input>
         </form>
         <nav className={styles.nav}>
-          <div className={styles.gameItem}>Компьютер</div>
+          {location.pathname.substring(1) === 'computer' ? (
+            <NavLink to='/computer' className={styles.gameItemChosen}>
+              Компьютер
+            </NavLink>
+          ) : (
+            <NavLink to='/computer' className={styles.gameItem}>
+              Компьютер
+            </NavLink>
+          )}
           {numberOfGames.map((el, i) => {
-            console.log(i);
             return (
-              <div key={i} className={styles.gameItem}>
+              <NavLink key={i} to={`/${i}`} className={styles.gameItem}>
                 {i}
-              </div>
+              </NavLink>
             );
           })}
         </nav>
       </section>
-      <section className={styles.sectionRight}>
-        <div className={styles.gameWrapper}>
-          <div className={styles.cell} id='1'></div>
-          <div className={styles.cell} id='2'></div>
-          <div className={styles.cell} id='3'></div>
-          <div className={styles.cell} id='4'></div>
-          <div className={styles.cell} id='5'></div>
-          <div className={styles.cell} id='6'></div>
-          <div className={styles.cell} id='7'></div>
-          <div className={styles.cell} id='8'></div>
-          <div className={styles.cell} id='9'></div>
-        </div>
-      </section>
+      <Outlet />
     </main>
   );
 };
