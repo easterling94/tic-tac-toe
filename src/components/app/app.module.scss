@@ -4,12 +4,13 @@
   font-family: 'Roboto';
   src: url(../../assets/Roboto-Thin.ttf);
 }
-
+body {
+  background-color: $background;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: $background;
 }
 
 .app {
@@ -23,7 +24,7 @@
   padding: 10px;
 }
 .app * {
-  background-color: white;
+  // background-color: white;
 }
 .app h1 {
   font-size: 1.5rem;

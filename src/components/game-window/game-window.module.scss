@@ -1,0 +1,104 @@
+@import '../../assets/styles-variables.scss';
+
+main {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: row;
+}
+.sectionLeft {
+  width: $sectionLeftWidth;
+}
+.sectionRight {
+  width: $sectionRightWidth;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.searchForm {
+  display: flex;
+  position: relative;
+  height: 30px;
+  margin-left: 4px;
+}
+
+.searchField {
+  color: #ce9d9d;
+  border: 1px solid grey;
+  border-radius: 5px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 30px;
+  padding-left: 30px;
+  text-decoration: none;
+}
+
+.searchField:focus {
+  box-shadow: 0px 0px 10px 2px rgb(174, 161, 238);
+  outline: none;
+}
+
+.searchBtn {
+  border: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.nav {
+  margin: 5px 0px;
+  height: 90%;
+  overflow: auto;
+}
+.gameItem {
+  text-decoration: none;
+  font-size: 1.1em;
+  border: 1px solid #cacae4;
+  border-radius: 5px;
+  display: flex;
+  padding: 0.5rem;
+  width: 200px;
+  color: black;
+  @include hover();
+  margin: 4px 0px 4px 4px;
+}
+// .gameItem:nth-of-type(1n + 2) {
+//   margin: 4px 0px;
+// }
+
+.nav::-webkit-scrollbar {
+  width: 15px;
+}
+.nav::-webkit-scrollbar-track {
+  background-color: #cacae4;
+  border-radius: 10px;
+}
+.nav::-webkit-scrollbar-thumb{
+  background-color: #7d7dee;
+  border-radius: 10px;
+}
+
+.gameWrapper {
+  width: 300px;
+  height: 300px;
+  margin: 0px auto;
+  background-color: #cacae4;
+  border: 2px solid #cacae4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2px;
+}
+.cell {
+  background-color: white;
+  position: relative;
+  @include hover();
+}
+.contentX {
+  position: absolute;
+}
+.positionO {
+  position: absolute;
+}

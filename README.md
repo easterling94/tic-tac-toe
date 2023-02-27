@@ -1,3 +1,3 @@
-React App без использования CRA
+Игра крестики-нолики
 
 Технологии: Webpack, Typescript, React, SASS

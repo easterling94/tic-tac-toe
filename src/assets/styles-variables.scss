@@ -5,4 +5,17 @@ $maxWidth: 800px;
 $height: 500px;
 
 // MAIN styles
-$sectionLeftWidth: calc($maxWidth * 0.3)
+$sectionLeftWidth: calc($maxWidth * 0.3);
+$sectionRightWidth: calc($maxWidth * 0.7);
+
+// HOVER styles
+$onHover: #7d7dee;
+$onHoverShadow: #6363bd;
+
+@mixin hover() {
+  &:hover {
+    background-color: $onHover;
+    border-color: $onHover;
+    box-shadow: 0px 0px 2px 2px $onHoverShadow;
+  }
+}

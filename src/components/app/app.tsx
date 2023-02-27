@@ -1,13 +1,14 @@
 import React from 'react';
-import { ChatWindow } from '../chat-window/chat-window';
+import { Header } from '../header/header';
+import { GameWindow } from '../game-window/game-window';
 import { Footer } from '../footer/footer';
 import styles from './app.module.scss';
 
 export const App = () => {
   return (
     <div className={styles.app}>
-      <h1>Выберете чат для общения</h1>
-      <ChatWindow />
+      <Header />
+      <GameWindow />
       <Footer />
     </div>
   );
