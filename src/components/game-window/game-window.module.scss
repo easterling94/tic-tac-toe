@@ -86,8 +86,7 @@ main {
 }
 
 .gameWrapper {
-  width: 300px;
-  height: 300px;
+
   margin: 0px auto;
   background-color: #cacae4;
   border: 2px solid #cacae4;
@@ -96,6 +95,8 @@ main {
   grid-gap: 2px;
 }
 .cell {
+  width: 100px;
+  height: 100px;
   background-color: white;
   position: relative;
   @include hover();
@@ -105,4 +106,61 @@ main {
 }
 .positionO {
   position: absolute;
+}
+
+// Board X's and O's styles
+
+.cellContent {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+// X's on the board
+.line {
+  width: 0px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: black;
+  position: absolute;
+}
+
+.firstLine {
+  transform: rotate(45deg);
+  transform-origin: center left;
+  transition: width 0.5s ease-in-out 0.5s;
+  top: 10px;
+  left: 14px;
+}
+.firstLineWrite {
+  width: 100px;
+}
+.secondLine {
+  transform: rotate(-45deg);
+  transform-origin: center left;
+  transition: width 0.5s ease-in-out 1s;
+  bottom: 10px;
+  left: 14px;
+}
+.secondLineWrite {
+  width: 100px;
+}
+
+// O's on the board
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: black;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.circleInner {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }

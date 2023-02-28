@@ -6,7 +6,6 @@ import { Outlet } from '../../../node_modules/react-router-dom/dist/index';
 
 export const GameWindow = () => {
   const location = useLocation();
-  console.log(location.pathname.substring(1));
   const numberOfGames = new Array(10).fill(0);
   const [value, setValue] = useState('');
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,11 +42,18 @@ export const GameWindow = () => {
             </NavLink>
           )}
           {numberOfGames.map((el, i) => {
-            return (
-              <NavLink key={i} to={`/${i}`} className={styles.gameItem}>
-                {i}
-              </NavLink>
-            );
+            {
+              return location.pathname.substring(1) === i.toString() ? (
+                <NavLink key={i} to={`/${i}`} className={styles.gameItemChosen}>
+                  {i}
+                </NavLink>
+              ) : (
+                <NavLink key={i} to={`/${i}`} className={styles.gameItem}>
+                  {i}
+                </NavLink>
+              );
+            }
+            // pretty ugly, but isActive in NavLink className somehow doesn't work
           })}
         </nav>
       </section>
