@@ -1,6 +1,4 @@
 import React, { useEffect, useState, SyntheticEvent } from 'react';
-// import game from '../../store/currentGame';
-// import { observer } from '../../../node_modules/mobx-react-lite/dist/observer';
 
 import styles from './game-window.module.scss';
 
@@ -11,7 +9,6 @@ const FirstPlayer = () => {
   const [state, setState] = useState(false);
   useEffect(() => {
     setState(true);
-    // console.log(game.currentGame);
   }, []);
   return (
     <div className={styles.cellContent}>
