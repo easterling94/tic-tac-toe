@@ -1,7 +1,7 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './components/app/app';
-import { ErrorPage } from './pages/error-page';
+import { ErrorPage } from './components/game-window/game-error';
 import { Board } from './components/game-window/board';
 import { NoGameChosen } from './components/game-window/no-game-chosen';
 import {
@@ -17,7 +17,6 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -26,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: ':gameID',
         element: <Board />,
+      },
+      {
+        path: '/error',
+        element: <ErrorPage />,
       },
     ],
   },
