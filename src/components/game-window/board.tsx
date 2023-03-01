@@ -33,15 +33,16 @@ const SecondPlayer = () => {
   return (
     <div className={styles.cellContent}>
       <div className={styles.circle}></div>
+      <div className={styles.circleLeft}></div>
+      <div className={styles.circleRight}></div>
       <div className={styles.circleInner}></div>
-      <div className={`${state ? styles.circleWrite : undefined}`}></div>
     </div>
   );
 };
 
 const Cell = () => {
   const [state, setState] = useState(false);
-  const [player, setPlayer] = useState(2);
+  const [player, setPlayer] = useState(1);
   const handleClick = (e: SyntheticEvent) => {
     setState(true);
   };

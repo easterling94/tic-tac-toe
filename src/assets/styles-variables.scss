@@ -15,7 +15,6 @@ $onHoverShadow: #6363bd;
 @mixin hover() {
   &:hover {
     cursor: pointer;
-    background-color: $onHover;
     border-color: $onHover;
     box-shadow: 0px 0px 2px 2px $onHoverShadow;
   }

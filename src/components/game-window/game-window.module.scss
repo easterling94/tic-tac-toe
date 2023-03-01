@@ -113,6 +113,7 @@ main {
 .cellContent {
   width: 100px;
   height: 100px;
+  overflow: hidden;
   position: relative;
 }
 // X's on the board
@@ -146,21 +147,51 @@ main {
 }
 
 // O's on the board
+
 .circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: black;
   position: absolute;
   top: 10px;
   left: 10px;
+  width: 80px;
+  height: 80px;
+  background-color: black;
+  border-radius: 50%;
+}
+.circleLeft {
+  position: absolute;
+  height: 100px;
+  bottom: 0px;
+  left: 0px;
+  width: 50px;
+  background-color: rgb(255, 255, 255);
+  animation: rotationLeft 0.25s linear 0.25s forwards;
+}
+
+.circleRight {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  width: 50px;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  animation: rotationRight 0.25s linear 0.5s forwards;
 }
 .circleInner {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: white;
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;  
+  background-color: white;
+  border-radius: 50%;
+}
+
+@keyframes rotationLeft {
+  0% {height: 100px}
+  100% {height: 0px}
+}
+
+@keyframes rotationRight {
+  0% {height: 100px}
+  100% {height: 0px}
 }
