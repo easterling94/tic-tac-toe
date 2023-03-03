@@ -1,3 +1,3 @@
 Игра крестики-нолики
 
-Технологии: Webpack, Typescript, React, SASS
+Технологии: Typescript, Redux Toolkit, SASS, Websockets

@@ -6,11 +6,8 @@ import { useLocation } from '../../../node_modules/react-router-dom/dist/index';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 import styles from './app.module.scss';
 import { fakeGames } from '../../store/fake-games-store';
-import { useAppSelector } from '../../store/store-config';
 
 export const App = () => {
-  const data = useAppSelector((state) => state.player);
-  console.log(data);
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {

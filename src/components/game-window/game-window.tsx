@@ -6,10 +6,11 @@ import {
   useLocation,
 } from '../../../node_modules/react-router-dom/dist/index';
 import { Outlet } from '../../../node_modules/react-router-dom/dist/index';
+import { useAppSelector } from '../../store/store-config';
 
 export const GameWindow = () => {
   const location = useLocation();
-  const numberOfGames = new Array(10).fill(0);
+  const numberOfGames = useAppSelector((state) => state.games.games);
   const [value, setValue] = useState('');
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);

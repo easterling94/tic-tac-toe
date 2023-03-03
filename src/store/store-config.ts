@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from 'redux';
-import { playerSlice } from './slicers/playerSlicer'
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
+import { playerSlice } from './slicers/playerSlicer'
+import { gamesSlice } from './slicers/gamesSlicer';
 
 const rootReducer = combineReducers({
   player: playerSlice.reducer,
+  games: gamesSlice.reducer,
 });
 
 export const store = configureStore({
