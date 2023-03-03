@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './game-window.module.scss';
 
 export const NoGameChosen = () => {

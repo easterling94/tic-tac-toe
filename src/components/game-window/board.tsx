@@ -1,4 +1,4 @@
-import React, { useEffect, useState, SyntheticEvent } from 'react';
+import { useEffect, useState, SyntheticEvent } from 'react';
 
 import styles from './game-window.module.scss';
 

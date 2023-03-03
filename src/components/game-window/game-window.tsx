@@ -1,7 +1,10 @@
 import React, { SyntheticEvent, useState } from 'react';
 import styles from './game-window.module.scss';
-import logo from '../../assets/search_icon_test.png';
-import { NavLink, useLocation } from 'react-router-dom';
+import logo from '../../assets/search_icon.png';
+import {
+  NavLink,
+  useLocation,
+} from '../../../node_modules/react-router-dom/dist/index';
 import { Outlet } from '../../../node_modules/react-router-dom/dist/index';
 
 export const GameWindow = () => {

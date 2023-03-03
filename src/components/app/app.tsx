@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Header } from '../header/header';
 import { GameWindow } from '../game-window/game-window';
 import { Footer } from '../footer/footer';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from '../../../node_modules/react-router-dom/dist/index';
 import { useNavigate } from '../../../node_modules/react-router-dom/dist/index';
 import styles from './app.module.scss';
 import { fakeGames } from '../../store/fake-games-store';
+import { useAppSelector } from '../../store/store-config';
 
 export const App = () => {
+  const data = useAppSelector((state) => state.player);
+  console.log(data);
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
