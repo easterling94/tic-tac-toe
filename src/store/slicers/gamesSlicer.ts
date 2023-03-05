@@ -8,12 +8,15 @@ interface IGame {
 }
 
 interface InitialState {
-  games: null | Array<IGame>,
+  games: Array<IGame>,
   chosenGame: null | string,
+  currentUserGame: null | string,
 }
 
-const initialState = {
-  games: fakeGames
+const initialState: InitialState = {
+  games: fakeGames,
+  chosenGame: null,
+  currentUserGame: null,
 }
 
 export const gamesSlice = createSlice({
@@ -24,8 +27,8 @@ export const gamesSlice = createSlice({
 
     },
     createNewGame(state, action: PayloadAction<string>) {
-      console.log(action.payload)
-      state.games = [...state.games, {id: state.games.length, name: action.payload}]
+      state.games = [...state.games, {id: state.games?.length, name: action.payload}];
+      state.currentUserGame = action.payload;
     }
   }
 })
