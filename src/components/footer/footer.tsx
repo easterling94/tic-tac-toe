@@ -21,7 +21,8 @@ export const Footer = () => {
 const CreateNewGame = () => {
   const dispatch = useAppDispatch();
   const handleClick = () => {
-    const TABLE_ID = uuid();
+    const TABLE_ID_UUID = uuid();
+    const TABLE_ID = TABLE_ID_UUID.match(/^([^-]+)-/)![1];
     dispatch(createNewGameAction(TABLE_ID));
   };
   return (

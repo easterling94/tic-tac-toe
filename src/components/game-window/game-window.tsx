@@ -1,16 +1,12 @@
 import React, { SyntheticEvent, useState } from 'react';
 import styles from './game-window.module.scss';
 import logo from '../../assets/search_icon.png';
-import {
-  NavLink,
-  useLocation,
-} from '../../../node_modules/react-router-dom/dist/index';
+import { NavLink } from '../../../node_modules/react-router-dom/dist/index';
 import { Outlet } from '../../../node_modules/react-router-dom/dist/index';
 import { useAppSelector } from '../../store/store-config';
 
 export const GameWindow = () => {
-  const location = useLocation();
-  const numberOfGames = useAppSelector((state) => state.games.games);
+  const games = useAppSelector((state) => state.games.games);
   const [value, setValue] = useState('');
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
@@ -29,37 +25,12 @@ export const GameWindow = () => {
           </button>
           <input
             className={styles.searchField}
-            placeholder='Ввидите ID игры'
+            placeholder='Введите ID игры'
             type='text'
             value={value}
             onChange={onChange}
           ></input>
         </form>
-        {/* <nav className={styles.nav}>
-          {location.pathname.substring(1) === 'computer' ? (
-            <NavLink to='/computer' className={styles.gameItemChosen}>
-              Компьютер
-            </NavLink>
-          ) : (
-            <NavLink to='/computer' className={styles.gameItem}>
-              Компьютер
-            </NavLink>
-          )}
-          {numberOfGames.map((el, i) => {
-            {
-              return location.pathname.substring(1) === i.toString() ? (
-                <NavLink key={i} to={`/${i}`} className={styles.gameItemChosen}>
-                  {i}
-                </NavLink>
-              ) : (
-                <NavLink key={i} to={`/${i}`} className={styles.gameItem}>
-                  {i}
-                </NavLink>
-              );
-            }
-            // pretty ugly, but isActive in NavLink className somehow doesn't work
-          })}
-        </nav> */}
         <nav className={styles.nav}>
           <NavLink
             to='/computer'
@@ -69,16 +40,16 @@ export const GameWindow = () => {
           >
             Компьютер
           </NavLink>
-          {numberOfGames.map((el, i) => {
+          {games.map((el) => {
             return (
               <NavLink
-                key={i}
-                to={`/${i}`}
+                key={el.id}
+                to={`/${el.id}`}
                 className={({ isActive }) =>
                   isActive ? styles.gameItemChosen : styles.gameItem
                 }
               >
-                {i}
+                {el.name}
               </NavLink>
             );
           })}

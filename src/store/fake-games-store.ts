@@ -1,17 +1,15 @@
-interface IGame {
-    id: number;
-    name: string;
-}
+import { IGame } from './slicers/gamesSlicer'
+
 export const fakeGames: Array<IGame> = [
   {
-    id: 1,
-    name: 'computer'
+    id: '1',
+    name: 'Стол 1'
   },
   {
-    id: 2,
-    name: '0'
+    id: '2',
+    name: 'Стол 2'
   },  {
-    id: 3,
-    name: '1'
+    id: '3',
+    name: 'Стол 3'
   }
 ]

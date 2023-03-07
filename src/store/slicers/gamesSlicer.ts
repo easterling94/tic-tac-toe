@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { fakeGames } from '../fake-games-store'
 
-interface IGame {
-  id: number;
+export interface IGame {
+  id: string;
   name: string;
 }
 
@@ -27,7 +27,7 @@ export const gamesSlice = createSlice({
 
     },
     createNewGame(state, action: PayloadAction<string>) {
-      state.games = [...state.games, {id: state.games?.length, name: action.payload}];
+      state.games = [...state.games, {id: action.payload, name: `Стол ${state.games?.length + 1}`}];
       state.currentUserGame = action.payload;
     }
   }
