@@ -9,13 +9,11 @@ export interface IGame {
 
 interface InitialState {
   games: Array<IGame>,
-  chosenGame: null | string,
   currentUserGame: null | string,
 }
 
 const initialState: InitialState = {
   games: fakeGames,
-  chosenGame: null,
   currentUserGame: null,
 }
 
