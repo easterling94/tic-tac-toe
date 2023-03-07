@@ -35,7 +35,7 @@ export const GameWindow = () => {
             onChange={onChange}
           ></input>
         </form>
-        <nav className={styles.nav}>
+        {/* <nav className={styles.nav}>
           {location.pathname.substring(1) === 'computer' ? (
             <NavLink to='/computer' className={styles.gameItemChosen}>
               Компьютер
@@ -58,6 +58,29 @@ export const GameWindow = () => {
               );
             }
             // pretty ugly, but isActive in NavLink className somehow doesn't work
+          })}
+        </nav> */}
+        <nav className={styles.nav}>
+          <NavLink
+            to='/computer'
+            className={({ isActive }) =>
+              isActive ? styles.gameItemChosen : styles.gameItem
+            }
+          >
+            Компьютер
+          </NavLink>
+          {numberOfGames.map((el, i) => {
+            return (
+              <NavLink
+                key={i}
+                to={`/${i}`}
+                className={({ isActive }) =>
+                  isActive ? styles.gameItemChosen : styles.gameItem
+                }
+              >
+                {i}
+              </NavLink>
+            );
           })}
         </nav>
       </section>
