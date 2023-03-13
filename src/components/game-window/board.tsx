@@ -1,4 +1,6 @@
 import { useEffect, useState, SyntheticEvent } from 'react';
+import { useParams } from 'react-router-dom';
+import { useAppSelector } from '../../store/store-config';
 
 import styles from './game-window.module.scss';
 
@@ -41,21 +43,28 @@ const SecondPlayer = () => {
   );
 };
 
-const Cell = () => {
+const Cell: React.FC<{ position: number }> = ({ position }) => {
+  const params = useParams();
   const [state, setState] = useState(false);
-  const [player, setPlayer] = useState(1);
+
+  const chosenGame = useAppSelector((state) => state.games.games).filter(
+    (game) => game.id === params.gameID
+  )[0];
+
+  const isPlayerFirst = chosenGame.isCurrentUserFirst;
+
   const handleClick = (e: SyntheticEvent) => {
     setState(true);
   };
   return (
-    <div className={styles.cell} id='2' onClick={handleClick}>
-      {player === 1 ? (
+    <div className={styles.cell} onClick={handleClick}>
+      {isPlayerFirst ? (
         state ? (
           <FirstPlayer />
         ) : (
           ''
         )
-      ) : player == 2 ? (
+      ) : !isPlayerFirst ? (
         state ? (
           <SecondPlayer />
         ) : (
@@ -69,12 +78,16 @@ const Cell = () => {
 };
 
 export const Board = () => {
-  const array = new Array(9).fill(0);
+  const params = useParams();
+  const chosenGame = useAppSelector((state) => state.games.games).filter(
+    (game) => game.id === params.gameID
+  )[0];
+  const board = chosenGame.board;
   return (
     <section className={styles.sectionRight}>
       <div className={styles.gameWrapper}>
-        {array.map((el, i) => {
-          return <Cell key={i} />;
+        {board.map((el, i) => {
+          return <Cell key={i} position={i} />;
         })}
       </div>
     </section>

@@ -19,7 +19,7 @@ export const App = () => {
 
   useEffect(() => {
     const test = games.some((el) => el.id === params.gameID);
-    if (test) {
+    if (test || params.gameID === undefined) {
       return;
     }
     navigate('/error');
