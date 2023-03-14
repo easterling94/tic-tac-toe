@@ -32,14 +32,6 @@ export const GameWindow = () => {
           ></input>
         </form>
         <nav className={styles.nav}>
-          <NavLink
-            to='/computer'
-            className={({ isActive }) =>
-              isActive ? styles.gameItemChosen : styles.gameItem
-            }
-          >
-            Компьютер
-          </NavLink>
           {games.map((el) => {
             return (
               <NavLink
