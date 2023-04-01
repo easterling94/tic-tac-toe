@@ -1,7 +1,7 @@
 import { useEffect, useState, SyntheticEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '../../store/store-config';
-
+import { TBoardRow } from '../../store/slicers/gamesSlicer';
 import styles from './game-window.module.scss';
 
 // First player goes with X
@@ -43,7 +43,7 @@ const SecondPlayer = () => {
   );
 };
 
-const Cell: React.FC<{ position: number }> = ({ position }) => {
+const Cell: React.FC<{ value: TBoardRow }> = ({ value }) => {
   const params = useParams();
   const [state, setState] = useState(false);
 
@@ -58,21 +58,7 @@ const Cell: React.FC<{ position: number }> = ({ position }) => {
   };
   return (
     <div className={styles.cell} onClick={handleClick}>
-      {isPlayerFirst ? (
-        state ? (
-          <FirstPlayer />
-        ) : (
-          ''
-        )
-      ) : !isPlayerFirst ? (
-        state ? (
-          <SecondPlayer />
-        ) : (
-          ''
-        )
-      ) : (
-        ''
-      )}
+      {value ? value === 'X' ? <FirstPlayer /> : <SecondPlayer /> : ''}
     </div>
   );
 };
@@ -82,12 +68,11 @@ export const Board = () => {
   const chosenGame = useAppSelector((state) => state.games.games).filter(
     (game) => game.id === params.gameID
   )[0];
-  const board = chosenGame.board;
   return (
     <section className={styles.sectionRight}>
       <div className={styles.gameWrapper}>
-        {board.map((el, i) => {
-          return <Cell key={i} position={i} />;
+        {chosenGame.board.map((el, i) => {
+          return <Cell key={i} value={el} />;
         })}
       </div>
     </section>

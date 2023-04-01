@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { fakeGames } from '../fake-games-store'
 
-type IBoardRow = Array<null | boolean>
+export type TBoardRow = null | 'X' | 'O'
 
 export interface IGame {
   id: string;
   name: string;
   isCurrentUserFirst: boolean,
-  board: IBoardRow
+  board: Array<TBoardRow>
 }
 
 interface InitialState {
@@ -16,7 +16,7 @@ interface InitialState {
   currentUserGame: null | string,
 }
 
-const NEW_GAME: IBoardRow = [
+const NEW_GAME: Array<TBoardRow> = [
     null,
     null,
     null,
@@ -44,6 +44,8 @@ export const gamesSlice = createSlice({
       state.games = [...state.games, {id: action.payload, name: `Стол ${state.games?.length + 1}`, isCurrentUserFirst: true, board: NEW_GAME}];
       state.currentUserGame = action.payload;
     },
-    playingGame(state) {}
+    recordPlayerMove(state, action: PayloadAction<IGame>) {
+      state.games = state.games.map(game => game.id === action.payload.id ? action.payload : game)
+    }
   }
 })
